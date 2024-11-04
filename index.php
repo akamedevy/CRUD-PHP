@@ -1,3 +1,32 @@
+<?php
+include 'conecta.php';
+
+if (isset($_POST['cadastrar'])){
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $fone = $_POST['fone'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+
+    echo "<br>" . $nome;
+    echo "<br>" . $cpf;
+    echo "<br>" . $fone;
+    echo "<br>" . $email;
+    echo "<br>" . $senha;
+
+    $sql = "INSERT INTO cliente (id,nome,cpf,telefone,email,senha) VALUES ('','$nome','$cpf','$fone','$email','$senha')";
+
+    $res = mysqli_query($con,$sql);
+    // header('location: listar.php');
+
+    if ($res){
+        echo "<script> alert('foikkkkkkkkkkkkkkkkkkkkkkkkk!') </script>";
+        header('location: listar.php');
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,7 +36,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="elefante.php" method="POST">
+    <form method="POST">
         <label for="nome">NOME:</label>
         <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
 
